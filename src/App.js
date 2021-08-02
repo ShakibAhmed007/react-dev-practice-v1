@@ -3,12 +3,7 @@ import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewUser from '../src/components/NewUser/NewUser';
 import UserList from '../src/components/UserList/UserList';
-const DUMMY_USER = [
-  {
-    email: 's@gmail.com',
-    userName: 'Shakib'
-  }
-];
+const DUMMY_USER = [];
 
 export default function App() {
   const [userList, setUserList] = useState(DUMMY_USER);
@@ -21,13 +16,9 @@ export default function App() {
         'Content-Type': 'application/json'
       }
     );
-
-    setUserList(prevUserList => {
-      return [data, ...prevUserList];
-    });
   };
 
-  const getData = (async () => {
+  const getData = async () => {
     try {
       const response = await fetch(
         'https://dev-http-default-rtdb.firebaseio.com/user.json'
@@ -40,13 +31,13 @@ export default function App() {
       for (const key in data) {
         dataArr.push({
           id: data[key].email,
-          title: data[key].userName
+          email: data[key].email,
+          userName: data[key].userName
         });
       }
       setUserList(dataArr);
     } catch (error) {}
-  },
-  []);
+  };
 
   return (
     <div>
@@ -57,6 +48,10 @@ export default function App() {
         </div>
       </div>
       <br />
+      <button className="btn btn-primary" onClick={getData}>
+        {' '}
+        Get Data{' '}
+      </button>
       <div className="card">
         <div className="card-header">User List</div>
         <div className="card-body">
