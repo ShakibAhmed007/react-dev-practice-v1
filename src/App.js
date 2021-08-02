@@ -20,15 +20,15 @@ export default function App() {
   return (
     <div>
       <div className="card">
-        <div class="card-header">New User</div>
-        <div class="card-body">
+        <div className="card-header">New User</div>
+        <div className="card-body">
           <NewUser onSubmitFormData={userFormSubmitHandler} />
         </div>
       </div>
       <br />
       <div className="card">
-        <div class="card-header">User List</div>
-        <div class="card-body">
+        <div className="card-header">User List</div>
+        <div className="card-body">
           <UserList userList={userList} />
         </div>
       </div>
