@@ -26,6 +26,28 @@ export default function App() {
       return [data, ...prevUserList];
     });
   };
+
+  const getData = (async () => {
+    try {
+      const response = await fetch(
+        'https://dev-http-default-rtdb.firebaseio.com/user.json'
+      );
+      if (!response.ok) {
+        throw new Error('Something went wrong');
+      }
+      const data = await response.json();
+      const dataArr = [];
+      for (const key in data) {
+        dataArr.push({
+          id: data[key].email,
+          title: data[key].userName
+        });
+      }
+      setUserList(dataArr);
+    } catch (error) {}
+  },
+  []);
+
   return (
     <div>
       <div className="card">
