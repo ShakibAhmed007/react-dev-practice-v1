@@ -13,6 +13,15 @@ const DUMMY_USER = [
 export default function App() {
   const [userList, setUserList] = useState(DUMMY_USER);
   const userFormSubmitHandler = data => {
+    const saveData = fetch(
+      'https://dev-http-default-rtdb.firebaseio.com/user.json',
+      {
+        method: 'POST',
+        body: JSON.stringify(data),
+        'Content-Type': 'application/json'
+      }
+    );
+
     setUserList(prevUserList => {
       return [data, ...prevUserList];
     });
