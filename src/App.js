@@ -12,7 +12,7 @@ const DUMMY_USER = [
 
 export default function App() {
   const [userList, setUserList] = useState(DUMMY_USER);
-  const userFormSubmitHandler = data => {
+  const userFormSubmitHandler = async data => {
     const saveData = fetch(
       'https://dev-http-default-rtdb.firebaseio.com/user.json',
       {
