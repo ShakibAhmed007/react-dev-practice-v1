@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewUser from '../src/components/NewUser/NewUser';
