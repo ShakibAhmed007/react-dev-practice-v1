@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Button from '../UI/Button';
+import ConfirmationModal from '../UI/ConfirmationModal';
 
 const NewUser = props => {
   const [email, setEmail] = useState('');
   const [userName, setUserName] = useState('');
+  const [error, setError] = useState();
 
   const emailChangeHandler = event => {
     setEmail(event.target.value);
@@ -15,6 +17,13 @@ const NewUser = props => {
 
   const submitHandler = event => {
     event.preventDefault();
+    if (email.trim().length === 0 || userName.trim().length === 0) {
+      setError({
+        title: 'Invalid Input',
+        message: 'Please enter value !!!'
+      });
+      return;
+    }
     console.log(email, userName);
     const data = {
       email: email,
@@ -25,6 +34,12 @@ const NewUser = props => {
 
   return (
     <div>
+      {error && (
+        <ConfirmationModal
+          title="Error Occured"
+          message="Something went wrong !!!"
+        />
+      )}
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label for="exampleInputEmail1">Email address</label>
