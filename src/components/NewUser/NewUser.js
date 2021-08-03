@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '../UI/Button';
 
 const NewUser = props => {
   const [email, setEmail] = useState('');
@@ -49,9 +50,7 @@ const NewUser = props => {
           />
         </div>
         <br />
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );
