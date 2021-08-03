@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from './Button';
 
 const ConfirmationModal = props => {
   return (
@@ -14,7 +15,7 @@ const ConfirmationModal = props => {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              Modal title
+              {props.title}
             </h5>
             <button
               type="button"
@@ -25,18 +26,10 @@ const ConfirmationModal = props => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">...</div>
+          <div className="modal-body">{props.message}</div>
           <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" className="btn btn-primary">
-              Save changes
-            </button>
+            <Button data-dismiss="modal">Close</Button>
+            <Button type="button">Save changes</Button>
           </div>
         </div>
       </div>
