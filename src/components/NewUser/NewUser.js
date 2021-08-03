@@ -34,12 +34,11 @@ const NewUser = props => {
 
   return (
     <div>
-      {error && (
-        <ConfirmationModal
-          title="Error Occured"
-          message="Something went wrong !!!"
-        />
-      )}
+      <ConfirmationModal
+        title="Error Occured"
+        message="Something went wrong !!!"
+      />
+
       <form onSubmit={submitHandler}>
         <div className="form-group">
           <label for="exampleInputEmail1">Email address</label>
