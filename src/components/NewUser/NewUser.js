@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import Button from '../UI/Button';
 import ConfirmationModal from '../UI/ConfirmationModal';
+import { Button, ButtonToolbar, Modal } from 'react-bootstrap';
 
 const NewUser = props => {
   const [email, setEmail] = useState('');
   const [userName, setUserName] = useState('');
-  const [error, setError] = useState();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const emailChangeHandler = event => {
     setEmail(event.target.value);
@@ -18,10 +21,7 @@ const NewUser = props => {
   const submitHandler = event => {
     event.preventDefault();
     if (email.trim().length === 0 || userName.trim().length === 0) {
-      setError({
-        title: 'Invalid Input',
-        message: 'Please enter value !!!'
-      });
+      setShow(true);
       return;
     }
     console.log(email, userName);
@@ -34,10 +34,17 @@ const NewUser = props => {
 
   return (
     <div>
-      <ConfirmationModal
-        title="Error Occured"
-        message="Something went wrong !!!"
-      />
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Error</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Something went wrong !!!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <form onSubmit={submitHandler}>
         <div className="form-group">
