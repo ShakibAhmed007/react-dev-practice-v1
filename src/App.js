@@ -16,6 +16,7 @@ export default function App() {
         'Content-Type': 'application/json'
       }
     );
+    getData();
   };
 
   const getData = async () => {
@@ -49,8 +50,7 @@ export default function App() {
       </div>
       <br />
       <button className="btn btn-primary" onClick={getData}>
-        {' '}
-        Get Data{' '}
+        Get Data
       </button>
       <div className="card">
         <div className="card-header">User List</div>
